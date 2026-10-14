@@ -1,11 +1,16 @@
 services:
   - type: web
-    name: skillbridge-api
+    name: kb96-skillbridge-api
     runtime: docker
+    plan: free
+    region: singapore
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
     healthCheckPath: /api/health
     envVars:
-      - { key: MONGO_URI, sync: false }   # MongoDB Atlas connection string
-      - { key: JWT_SECRET, generateValue: true }
-      - { key: CLIENT_URL, sync: false }  # your Vercel URL
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
