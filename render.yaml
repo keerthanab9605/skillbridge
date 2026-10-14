@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: skillbridge-api
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - { key: MONGO_URI, sync: false }   # MongoDB Atlas connection string
+      - { key: JWT_SECRET, generateValue: true }
+      - { key: CLIENT_URL, sync: false }  # your Vercel URL
